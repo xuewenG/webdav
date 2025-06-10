@@ -1,0 +1,6 @@
+services:
+  main:
+    image: mcr.microsoft.com/devcontainers/go:1.23-bookworm
+    entrypoint: ["sleep", "infinity"]
+    ports:
+      - 3002:3002

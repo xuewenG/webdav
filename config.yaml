@@ -1,0 +1,7 @@
+port: 3002
+prefix: /dav
+root_dir: /data
+read_only: true
+users:
+  - username: test
+    password: test-123
