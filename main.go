@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/xuewenG/webdav/pkg/config"
-	"github.com/xuewenG/webdav/pkg/handler"
+	"github.com/xuewenG/webdav/pkg/router"
 )
 
 func main() {
@@ -31,11 +31,7 @@ func main() {
 	}
 
 	// 初始化路由
-	mux := http.NewServeMux()
-	// 添加健康检查路由
-	mux.HandleFunc("/health", handler.HealthCheckHandler)
-	// 添加 WebDAV 路由
-	mux.Handle(fmt.Sprintf("%s/", prefix), handler.NewWebDAVHandler(prefix, rootDir, readOnly))
+	mux := router.NewRouter()
 
 	// 启动服务器
 	addr := fmt.Sprintf(":%d", port)

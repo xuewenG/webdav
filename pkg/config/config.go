@@ -46,7 +46,9 @@ func InitConfig() error {
 	Config.Prefix = fmt.Sprintf("/%s", strings.Trim(Config.Prefix, "/"))
 
 	// 格式化 RootDir
-	Config.RootDir = fmt.Sprintf("/%s", strings.Trim(Config.RootDir, "/"))
+	if Config.RootDir == "" {
+		Config.RootDir = os.Getenv("PWD")
+	}
 
 	return nil
 }

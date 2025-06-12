@@ -1,5 +1,5 @@
 port: 3002
-prefix: /dav
+prefix: /
 root_dir: /data
 read_only: true
 users:

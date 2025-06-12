@@ -9,7 +9,7 @@
 # 端口
 port: 3002
 # 请求前缀
-prefix: /dav
+prefix: /
 # 文件目录
 root_dir: /data
 # 只读模式

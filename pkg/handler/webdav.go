@@ -4,16 +4,21 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/xuewenG/webdav/pkg/config"
 	"github.com/xuewenG/webdav/pkg/middleware"
+	"github.com/xuewenG/webdav/pkg/util"
 	"golang.org/x/net/webdav"
 )
 
 // NewWebDAVHandler 创建 WebDAV 处理器
-func NewWebDAVHandler(prefix string, rootDir string, readOnly bool) http.Handler {
+func NewWebDAVHandler() http.Handler {
+	rootDir := config.Config.RootDir
+	readOnly := config.Config.ReadOnly
+
 	// 创建处理器
 	var handler http.Handler
 	handler = &webdav.Handler{
-		Prefix:     prefix,
+		Prefix:     util.WithPrefix("/dav"),
 		FileSystem: webdav.Dir(rootDir),
 		LockSystem: webdav.NewMemLS(),
 		Logger: func(r *http.Request, err error) {
