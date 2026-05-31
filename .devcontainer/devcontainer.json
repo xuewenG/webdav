@@ -1,0 +1,29 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/go:1.23-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1.7": {
+      "version": "22"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Anthropic.claude-code",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "golang.go"
+      ]
+    }
+  },
+  "appPort": ["0.0.0.0:3002:3002"],
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
+  "remoteUser": "root",
+  "containerEnv": {
+    "TZ": "Asia/Shanghai",
+    "CLAUDE_CONFIG_DIR": "/root/.claude"
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.claude,target=/root/.claude,type=bind,consistency=cached"
+  ]
+}
