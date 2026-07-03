@@ -1,8 +1,8 @@
 module github.com/xuewenG/webdav
 
-go 1.23.9
+go 1.25.0
 
 require (
-	golang.org/x/net v0.41.0
+	golang.org/x/net v0.55.0
 	gopkg.in/yaml.v3 v3.0.1
 )
